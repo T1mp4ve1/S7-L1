@@ -41,7 +41,7 @@ class Pet {
   }
 
   compareOwner(otherPet) {
-    return this.ownerName.toLowerCase() === otherPet.ownerName;
+    return this.ownerName.toLowerCase() === otherPet.ownerName.toLowerCase();
   }
 }
 
@@ -49,11 +49,45 @@ class Pet {
 const pets = [];
 
 // link
-const petForm = document.getElementById('petForm')
-const petList = document.getElementById('petList')
+const petForm = document.getElementById("petForm");
+const petList = document.getElementById("petList");
 
+// animal in list
 function renderPets() {
-    petList.forEach(element => {
-        
-    });
+  petList.innerHTML = "";
+  pets.forEach((pet, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${pet.petName} (${pet.species}, ${pet.breed} - Padrone: ${pet.ownerName})`;
+    petList.appendChild(li);
+  });
 }
+
+// form event
+petForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  console.log(pets);
+  
+  // link value
+  const petName = document.getElementById("petName").value;
+  const ownerName = document.getElementById("ownerName").value;
+  const species = document.getElementById("species").value;
+  const breed = document.getElementById("breed").value;
+
+  // add pet
+  const newPet = new Pet(petName, ownerName, species, breed);
+
+  pets.push(newPet);
+
+  renderPets();
+
+  petForm.reset();
+
+  pets.forEach((pet) => {
+    if (pet !== newPet && newPet.compareOwner(pet)) {
+      console.log(
+        `${newPet.petName} e ${pet.petName} hanno lo stesso padrone (${(newPet.ownerName)})`
+      );
+    }
+  });
+});
