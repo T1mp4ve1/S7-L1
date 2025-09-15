@@ -53,11 +53,11 @@ const petForm = document.getElementById("petForm");
 const petList = document.getElementById("petList");
 
 // animal in list
-function renderPets() {
+function refreshFunc() {
   petList.innerHTML = "";
-  pets.forEach((pet, index) => {
+  pets.forEach((pet) => {
     const li = document.createElement("li");
-    li.textContent = `${pet.petName} (${pet.species}, ${pet.breed} - Padrone: ${pet.ownerName})`;
+    li.innerText = `${pet.petName} (${pet.species}, ${pet.breed} - Padrone: ${pet.ownerName})`;
     petList.appendChild(li);
   });
 }
@@ -66,8 +66,6 @@ function renderPets() {
 petForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  console.log(pets);
-  
   // link value
   const petName = document.getElementById("petName").value;
   const ownerName = document.getElementById("ownerName").value;
@@ -79,14 +77,14 @@ petForm.addEventListener("submit", (e) => {
 
   pets.push(newPet);
 
-  renderPets();
+  refreshFunc();
 
   petForm.reset();
 
   pets.forEach((pet) => {
     if (pet !== newPet && newPet.compareOwner(pet)) {
       console.log(
-        `${newPet.petName} e ${pet.petName} hanno lo stesso padrone (${(newPet.ownerName)})`
+        `${newPet.petName} e ${pet.petName} hanno lo stesso padrone (${newPet.ownerName})`
       );
     }
   });
