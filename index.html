@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1 class="display-2 text-center border-bottom border-secondary p-3 mb-5">Aggiungi animale domestico</h1>
+
+        <form class="row justify-content-center mb-5" id="petForm">
+
+            <div class="col-auto">
+                <label>Nome animale:</label><br>
+                <input type="text" id="petName" required><br>
+            </div>
+
+            <div class="col-auto">
+                <label>Padrone:</label><br>
+                <input type="text" id="ownerName" required><br>
+            </div>
+
+            <div class="col-auto">
+                <label>Specie:</label><br>
+                <select id="species" required>
+                    <option value="dog">Cane</option>
+                    <option value="cat">Gatto</option>
+                    <option value="cow">Mucca</option>
+                    <option value="other">Altro</option>
+                </select><br>
+            </div>
+
+            <div class="col-auto">
+                <label>Razza:</label><br>
+                <input type="text" id="breed" required><br>
+            </div>
+
+            <div class="col-12 d-flex justify-content-center mt-4">
+                <button class="btn btn-lg bg-dark rounded-0 text-light w-25">Aggiungi</button>
+            </div>
+
+        </form>
+
+        <h2>Lista Animali:</h2>
+        <ul id="petList"></ul>
+
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>
